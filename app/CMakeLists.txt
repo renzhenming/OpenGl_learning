@@ -5,6 +5,12 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+#设置头文件路径
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/main/cpp/include)
+
+set(CPP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/main/cpp)
+
+include_directories( ${CPP_DIR}/include/ )
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
@@ -17,7 +23,9 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/cpp/native-lib.cpp )
+             src/main/cpp/native-lib.cpp
+             src/main/cpp/esUtil_Android.c
+             src/main/cpp/Hello_Triangle.c )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -38,7 +46,9 @@ find_library( # Sets the name of the path variable.
 
 target_link_libraries( # Specifies the target library.
                        native-lib
-
+                       android
+                       EGL
+                       GLESv3
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )

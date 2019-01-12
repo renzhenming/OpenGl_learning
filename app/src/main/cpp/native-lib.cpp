@@ -8,3 +8,4 @@ Java_com_rzm_opengl_1learning_MainActivity_stringFromJNI(
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }
+
